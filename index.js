@@ -14,7 +14,7 @@ app.use(express.json());
 // DB_PSAAWORD=IbYPQj3AHB3fJMXs
 
 // 05 Database Connect > Connect your Application
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PSAAWORD}@cluster0.athiem3.mongodb.net/?retryWrites=true&w=majority`;
 
 const client = new MongoClient(uri, {
@@ -34,6 +34,14 @@ async function run() {
       const cursor = serviceCollection.find(query);
       const services = await cursor.toArray();
       res.send(services);
+
+      // 08 singleService data load to a page with full spacification
+      app.get("/services/:id", async (req, res) => {
+        const id = req.params.id;
+        const query = { _id: ObjectId(id) };
+        const service = await serviceCollection.findOne(query);
+        res.send(service);
+      });
     });
   } finally {
   }
