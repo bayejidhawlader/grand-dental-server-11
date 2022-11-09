@@ -48,7 +48,7 @@ async function run() {
 }
 run().catch((error) => console.error(error));
 
-// 03 http://localhost:5000/  // server side access
+// 03 https://lawyer-website-server.vercel.app/  // server side access
 app.get("/", (req, res) => {
   res.send("Lawyer server is running");
 });
