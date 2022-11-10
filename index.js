@@ -42,14 +42,6 @@ async function run() {
         const service = await serviceCollection.findOne(query);
         res.send(service);
       });
-
-      app.get("/services/:id", async (req, res) => {
-        const id = req.params.id;
-        const cursor = courseCollection.find(query).limit(3);
-        const query = { _id: ObjectId(id) };
-        const service = await serviceCollection.findOne(query);
-        res.send(service);
-      });
     });
   } finally {
   }
@@ -61,7 +53,7 @@ app.get("/", (req, res) => {
   res.send("Lawyer server is running");
 });
 
-// 04 ema john running on : 5000 port on commend line
+// 04 Grand Dental running on : 5000 port on commend line
 app.listen(port, () => {
   console.log(`Lawyer running on : ${port}`);
 });
