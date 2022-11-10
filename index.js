@@ -1,4 +1,4 @@
-// 01 basic setup
+// 01 Basic Setup
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
