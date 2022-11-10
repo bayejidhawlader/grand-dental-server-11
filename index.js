@@ -42,6 +42,13 @@ async function run() {
         const service = await serviceCollection.findOne(query);
         res.send(service);
       });
+
+      app.get("/services", async (req, res) => {
+        const query = {};
+        const cursor = serviceCollection.find(query);
+        const threeServices = await cursor.limit(3).toArray();
+        res.send(threeServices);
+      });
     });
   } finally {
   }
